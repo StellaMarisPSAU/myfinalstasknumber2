@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finals Task 2t</title>
+    <link rel="stylesheet" href="finaltask2.css">
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <td>Basketball Products:</td>
+            <td> <input type="text" size="10" id="products" placeholder="Insert Quantity..."> </td>
+            <td><button onclick="inc()" id="add">+</button></td>
+            <td><button onclick="dec()" id="add">-</button></td>
+        </tr>
+
+
+        <tr>
+            <td> Shipping and Handling fee:</td>
+            <td><input type="text" size="8" id="fee"></td> <br>
+            <td> <button onclick="confirm()" id="confirmzxc">Confirm</button></td> <br>
+            <td> <button onclick="cancel()" id="cancelledt">Cancel</button></td>
+        </tr>
+
+        <tr>
+            <td> <h1>Order Summary</h1></td>
+        </tr>
+
+        <tr>
+            <td> Items:</td>
+            <td id="items"></td>
+        </tr>
+
+        <tr>
+            <td> Shipping and Handling:</td>
+            <td id="shipping"></td>
+        </tr>
+
+        <tr>
+            <td>Total Before Tax:</td>
+            <td  id="before"></td>
+        </tr>
+
+
+        <tr>
+            <td>Estimated tax (10%): </td>
+            <td id="tax"></td>
+        </tr>
+
+        <tr>
+            <td >Order total:</td>
+            <td id="now"></td>
+        </tr>
+    </table>
+
+
+    <script>
+    
+    document.getElementById("fee").value = "$4.99";
+
+    let order = 0;
+        function inc () 
+        {
+            order += 1;
+            document.getElementById ("products").value = order;
+        }
+
+        function dec () 
+        {
+            if (order <= 0) {
+                order = 1; }
+                order -= 1;
+            document.getElementById ("products").value = order;
+           
+          
+        }
+
+        function confirm() {
+        let order = parseFloat(document.getElementById("products").value);
+
+        let price = order * 15.97; // = $15.97
+        document.getElementById("items").innerHTML = "$" + (price).toFixed(2);
+
+        let shipping= 4.99; //  = $4.99
+        document.getElementById("shipping").innerHTML = "$" + (shipping).toFixed(2);
+
+        let before =  price + shipping;
+        document.getElementById("before").textContent = "$" + (before).toFixed(2);
+     
+        let tax = before * 0.10;
+        document.getElementById("tax").innerHTML = "$" + (tax).toFixed(2);
+        let total = before + tax;
+        document.getElementById("now").innerHTML = "$" + (total).toFixed(2);
+
+        
+        
+        }
+
+        function cancel()
+        {
+            document.getElementById ("products").value = " ";
+            document.getElementById("items").innerHTML = "" ;
+            document.getElementById("shipping").innerHTML = "" ;
+            document.getElementById("before").innerHTML = "" ;
+            document.getElementById("tax").innerHTML = "" ;
+            document.getElementById("now").innerHTML = "" ;
+        }
+
+      
+
+    </script>
+</body>
+</html>
